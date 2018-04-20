@@ -11,17 +11,19 @@
 </head>
 <body>
 
-  <div class="container">
-    <div class="jumbotron">
-      <div class="banner">
-      <h1>Resty Rez's</h1>
-      <h3>"Should be five, ten minutes"</h3>
-      <hr>
-      <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="fas fa-utensils"></span> Home</button></a>
-      <a href="/tables"><button type="button" class="btn btn-danger btn-lg"><span class="fas fa-eye"></span> View Table</button></a>
+
+  
+    
+    <div class="container">
+        <div class="jumbotron">
+          <div class="banner">
+          <h1>Resty Rez's</h1>
+          <h3>"Should be five, ten minutes"</h3>
+          <hr>
+          <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="fas fa-home"></span> Home</button></a>
+          <a href="/tables"><button type="button" class="btn btn-danger btn-lg"><span class="fas fa-eye"></span> View Table</button></a>
+            </div>
         </div>
-    </div>
-</div>
 
       <!-- creates heading for the form -->
       <div class="card">
@@ -35,25 +37,25 @@
     <form>
       <div class="form-group row">
         <label>Name</label><br>
-        <input type="text" id="trainNameInput" class="form-control">
+        <input type="text" id="name" class="form-control">
       </div>
 
       <div class="form-group row">
         <label>Phone Number</label><br>
-        <input type="text" id="destinationInput" class="form-control">
+        <input type="text" id="phoneNumber" class="form-control">
       </div>
 
       <div class="form-group row">
         <label>Email</label><br>
-        <input type="text" id="startInput" class="form-control">
+        <input type="text" id="email" class="form-control">
       </div>
 
       <div class="form-group row">
         <label>Unique Id</label><br>
-        <input type="number" id="frequencyInput" class="form-control">
+        <input type="number" id="uniqueId" class="form-control">
       </div>
 
-      <button type=submit id="add-train-btn" class="btn btn-danger">Submit</button>
+      <button type=submit id="add-reservation-input" class="btn btn-danger">Submit</button>
     </form>
 
             </div>
@@ -63,6 +65,33 @@
         
         </div>   
   </body>
+
+
+
+  <script type="text/javascript">
+  //javascript for form
+  //-------------------------------------------------------------
+
+
+    $("#add-reservation-input").on("click", function() {
+        event.preventDefault();
+      var newReservation= {
+        name: $("#name").val().trim(),
+        phone: $("#phoneNumber").val().trim(),
+        email: $("#email").val().trim(),
+        uniqueID: $("#uniqueId").val().trim()
+      };
+
+      // Question: What does this code do??
+      $.post("/api/new", newReservation)
+        .then(function(data) {
+          console.log(data);
+          alert("Adding reservation..");
+        });
+    });
+  </script>
+
+  
   <footer class="footer">
     <div class="container">
       <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> | <a href="https://github.com/pshehan/Restaurant-Reservations">GitHub Repo</a></p>
