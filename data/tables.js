@@ -1,9 +1,9 @@
 var tables = [
     {
-      name: "Lebron James",
-      phone: "212-800-5555",
-      email: "ljames@gmail.com",
-      uniqueID: 23
+        name: "Lebron James",
+        phone: "212-800-5555",
+        email: "ljames@gmail.com",
+        uniqueID: 23
     },
     {
         name: "Dwyane Wade",
@@ -24,4 +24,6 @@ var tables = [
         email: "ESpo@yahoo.com",
         uniqueID: 100
     }
-  ];
+];
+
+module.exports= tables;
